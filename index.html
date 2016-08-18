@@ -4,34 +4,44 @@
 		<meta charset="utf-8">
 		<title>JM-Multi Track</title>
 		<style>
-			div { 
-				vertical-align:bottom;
-				height: 110px;
-				margin: 5px 0px 0px 0px;
-			}
-			.track {
-				display: inline-block;
-				width: 160px;
-				height: 100px;
-				background-color: skyblue;
-			}
-			.trackline {
-			}
-			canvas {
-				width: 300px;
-				height: 100px;
-				background: #202020; 
-				box-shadow: 0px 0px 10px blue;
-				color: white;
-				vertical-align:bottom;
-			}
-			img {
-				vertical-align:top;
-			}
-			#audioSource{
-				width: 120px;
-				vertical-align:bottom;
-			}
+		div { 
+			vertical-align:bottom;
+			height: 110px;
+			margin: 5px 0px 0px 0px;
+		}
+		.track {
+			display: inline-block;
+			width: 160px;
+			height: 100px;
+			background-color: skyblue;
+		}
+		.trackline {
+		}
+		canvas {
+			width: 300px;
+			height: 100px;
+			background: #202020; 
+			box-shadow: 0px 0px 10px blue;
+			color: white;
+			vertical-align:bottom;
+		}
+		img {
+			vertical-align:top;
+		}
+		#audioSource{
+			width: 120px;
+			vertical-align:bottom;
+		}
+		#record { 
+			height: 15vh;
+			display: inline-block;
+		}
+		#record.recording { 
+			background: red;
+			background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+			background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+			background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+		}
 		</style>
 	</head>
 	<body>
