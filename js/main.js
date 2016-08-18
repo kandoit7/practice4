@@ -2,6 +2,22 @@
 var audioInputSelect1 = document.querySelector('select');
 var selectors = [audioInputSelect1];
 
+function toggleRecording( e ) {
+	if (e.classList.contains("recording")) {
+	// stop recording
+		audioRecorder.stop();
+		e.classList.remove("recording");
+		audioRecorder.getBuffers( gotBuffers );
+	} else {
+	// start recording
+		if (!audioRecorder)
+	    		return;
+		e.classList.add("recording");
+		audioRecorder.clear();
+		audioRecorder.record();
+	}
+}
+
 function gotDevices(deviceInfos) {
 	var masterInputSelector = document.createElement('select');
 	/*
