@@ -43,13 +43,18 @@ function initAudio() {
 		});
 	}
 
-	var audioSource = audioInputSelect.value;
+	var audioSource = audioInputSelect1.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
 	navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
 }
 
+function handleError(error) {
+  console.log('navigator.getUserMedia error: ', error);
+}
+
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 audioInputSelect.onchange = initAudio;
 initAudio();
+
