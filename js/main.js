@@ -43,8 +43,8 @@ function toggleRecording( e ) {
 	}
 }
 
+var masterInputSelector = document.createElement('select');
 function gotDevices(deviceInfos) {
-	var masterInputSelector = document.createElement('select');
 	/*
 	var values = selectors.map(function(select) {
 		return select.value;
