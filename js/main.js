@@ -1,6 +1,9 @@
 
-var audioInputSelect = document.querySelector('select#audioSource');
-var selectors = [audioInputSelect];
+var audioInputSelect1 = document.querySelector('select.one');
+var audioInputSelect2 = document.querySelector('select.two');
+var audioInputSelect3 = document.querySelector('select.three');
+var audioInputSelect4 = document.querySelector('select.four');
+var selectors = [audioInputSelect1, audioInputSelect2, audioInputSelect3, audioInputSelect4];
 
 function gotDevices(deviceInfos) {
 	var values = selectors.map(function(select) {
