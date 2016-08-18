@@ -1,4 +1,5 @@
 
+var audioInputSelect = document.querySelector('select#audioSource');
 var selectors = [audioInputSelect];
 
 function gotDevices(deviceInfos) {
