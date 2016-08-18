@@ -54,6 +54,25 @@ function gotDevices(deviceInfos) {
   	}
 }
 
+function attachSinkId(element, sinkId, outputSelector) {
+	if (typeof element.sinkId !== 'undefined') {
+		element.setSinkId(sinkId).then(function() {
+			console.log('Success, audio output device attached: ' + sinkId + ' to ' + 'element with ' + element.title + ' as source.');
+		})
+	.catch(function(error) {
+		var errorMessage = error;
+		if (error.name === 'SecurityError') {
+			errorMessage = 'You need to use HTTPS for selecting audio output ' + 'device: ' + error;
+		}
+		console.error(errorMessage);
+		// Jump back to first output device in the list as it's the default.
+		outputSelector.selectedIndex = 0;
+	});
+	} else {
+		console.warn('Browser does not support output device selection.');
+	}
+}
+
 function changeAudioDestination(event) {
 	var deviceId = event.target.value;
 	var outputSelector = event.target;
