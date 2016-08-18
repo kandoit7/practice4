@@ -55,6 +55,6 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-audioInputSelect.onchange = initAudio;
+audioInputSelect1.onchange = initAudio;
 initAudio();
 
