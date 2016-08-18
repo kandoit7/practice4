@@ -43,9 +43,9 @@ function toggleRecording( e ) {
 	}
 }
 
-var masterInputSelector = document.createElement('select');
 function gotDevices(deviceInfos) {
-	/*
+	var masterInputSelector = document.createElement('select');
+	
 	var values = selectors.map(function(select) {
 		return select.value;
 	});
@@ -55,7 +55,7 @@ function gotDevices(deviceInfos) {
 			select.removeChild(select.firstChild);
 		}
 	});
-	*/
+	
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
@@ -75,7 +75,7 @@ function gotDevices(deviceInfos) {
 		} else {
 		}
 	}
-	/*
+	
 	selectors.forEach(function(select, selectorIndex) {
 		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
 			return n.value === values[selectorIndex];
@@ -83,7 +83,7 @@ function gotDevices(deviceInfos) {
 			select.value = values[selectorIndex];
 		}
 	});
-	*/
+	
 	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
