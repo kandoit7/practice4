@@ -14,6 +14,15 @@ var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 
+function gotBuffers( buffers ) {
+    var canvas = document.getElementById( "wavedisplay" );
+	//reference audiodisplay.js 
+    drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
+    // the ONLY time gotBuffers is called is right after a new recording is completed - 
+    // so here's where we should set up the download.
+    // audioRecorder.exportWAV( doneEncoding );
+}
+
 function toggleRecording( e ) {
 	if (e.classList.contains("recording")) {
 	// stop recording
