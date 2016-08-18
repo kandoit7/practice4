@@ -2,6 +2,18 @@
 var audioInputSelect1 = document.querySelector('select');
 var selectors = [audioInputSelect1];
 
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+var audioContext = new AudioContext();
+var audioInput = null,
+    realAudioInput = null,
+    audioRecorder = null;
+var Track = null;    
+var rafID = null;
+var analyserContext = null;
+var canvasWidth, canvasHeight;
+var recIndex = 0;
+
 function toggleRecording( e ) {
 	if (e.classList.contains("recording")) {
 	// stop recording
