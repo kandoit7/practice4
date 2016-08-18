@@ -67,10 +67,10 @@ function gotDevices(deviceInfos) {
 		}
 		*/
 		if (deviceInfo.kind === 'audioinput') {
-			option.text = deviceInfo.label ||
-			'microphone ' + (masterInputSelector.length + 1);
+			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
 			masterInputSelector.appendChild(option);
 		} else {
+			console.log('Found non audio input device: ', deviceInfo.label);
 		}
 	}
 	/*
@@ -86,34 +86,13 @@ function gotDevices(deviceInfos) {
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
-    		audioInputSelect[selector].parentNode.replaceChild(newInputSelector,
-        	audioInputSelect[selector]);
+    		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-}
-
-function attachSinkId(element, sinkId, outputSelector) {
-	if (typeof element.sinkId !== 'undefined') {
-		element.setSinkId(sinkId).then(function() {
-		})
-	.catch(function(error) {
-		var errorMessage = error;
-		if (error.name === 'SecurityError') {
-			errorMessage = 'You need to use HTTPS for selecting audio output ' + 'device: ' + error;
-		}
-		console.error(errorMessage);
-		// Jump back to first output device in the list as it's the default.
-		outputSelector.selectedIndex = 0;
-	});
-	} else {
-		console.warn('Browser does not support output device selection.');
-	}
 }
 
 function changeAudioDestination(event) {
 	var deviceId = event.target.value;
-	var outputSelector = event.target;
 	var element = event.path[2].childNodes[1];
-	attachSinkId(element, deviceId, outputSelector);
 }
 
 function gotStream(stream) {
