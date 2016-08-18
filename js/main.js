@@ -33,7 +33,6 @@ function gotDevices(deviceInfos) {
 			'microphone ' + (masterInputSelector.length + 1);
 			masterInputSelector.appendChild(option);
 		} else {
-			console.log('Some other kind of source/device: ', deviceInfo);
 		}
 	}
 	/*
@@ -57,7 +56,6 @@ function gotDevices(deviceInfos) {
 function attachSinkId(element, sinkId, outputSelector) {
 	if (typeof element.sinkId !== 'undefined') {
 		element.setSinkId(sinkId).then(function() {
-			console.log('Success, audio output device attached: ' + sinkId + ' to ' + 'element with ' + element.title + ' as source.');
 		})
 	.catch(function(error) {
 		var errorMessage = error;
