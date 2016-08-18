@@ -21,8 +21,8 @@ function gotDevices(deviceInfos) {
 		option.value = deviceInfo.deviceId;
 		if (deviceInfo.kind === 'audioinput') {
 			option.text = deviceInfo.label ||
-			'microphone ' + (audioInputSelect.length + 1);
-			audioInputSelect.appendChild(option);
+			'microphone ' + (audioInputSelect1.length + 1);
+			audioInputSelect1.appendChild(option);
 		} else {
 			console.log('Some other kind of source/device: ', deviceInfo);
 		}
