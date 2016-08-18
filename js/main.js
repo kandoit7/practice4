@@ -14,6 +14,9 @@ var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 
+var inputPoint = audioContext.createGain();
+var changeGain = audioContext.createGain();
+
 function gotBuffers( buffers ) {
     var canvas = document.getElementById( "wavedisplay" );
 	//reference audiodisplay.js 
@@ -70,7 +73,6 @@ function gotDevices(deviceInfos) {
 			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
 			masterInputSelector.appendChild(option);
 		} else {
-			console.log('Found non audio input device: ', deviceInfo.label);
 		}
 	}
 	/*
