@@ -53,13 +53,13 @@ function gotDevices(deviceInfos) {
 			masterInputSelector.appendChild(option);
 		}
 	}
-	/*
+	
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
     		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-  	*/
+  	
 }
 
 function changeAudioDestination(event) {
