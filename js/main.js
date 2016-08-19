@@ -17,6 +17,7 @@ var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 var lrecord = null;
+var firstlink = null;
 
 var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
@@ -31,9 +32,7 @@ function gotBuffers( buffers ) {
 	audioRecorder.exportWAV( doneEncoding );
 }
 
-function play( e ) {
-	console.log( e );
-	var link = document.getElementById('save');
+function play() {
 	var tracklink = document.getElementById(lrecord);
 	tracklink.href = link.href
 	var track = new Audio(tracklink.href);
@@ -50,6 +49,7 @@ function toggleRecording( e ) {
 		e.classList.remove("recording");
 		audioRecorder.getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
+		link = document.getElementById('save');
 	} else {
 	// start recording
 		if (!audioRecorder)
