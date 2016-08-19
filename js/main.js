@@ -1,7 +1,7 @@
 
 //var masterInputSelector = document.createElement('select');
 
-var audioInputSelect = document.querySelector('select');
+var audioInputSelect = document.querySelectorAll('select');
 var selectors = [audioInputSelect];
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -46,24 +46,7 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-	/*
-	for (var i = 0; i !== deviceInfos.length; ++i) {
-		var deviceInfo = deviceInfos[i];
-		var option = document.createElement('option');
-		option.value = deviceInfo.deviceId;
-		if (deviceInfo.kind === 'audioinput') {
-			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
-			masterInputSelector.appendChild(option);
-		}
-	}
-	
-	var audioInputSelect = document.querySelectorAll('select');
-  	for (var selector = 0; selector < audioInputSelect.length; selector++) {
-    		var newInputSelector = masterInputSelector.cloneNode(true);
-    		newInputSelector.addEventListener('change', changeAudioDestination);
-    		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
-  	}
-  	*/
+
 	var values = selectors.map(function(select) {
 		return select.value;
 	});
@@ -123,7 +106,6 @@ function gotStream(stream) {
 	
 	function initAudio() {
 	if (window.stream) {
-		console.log("not");
 		window.stream.getTracks().forEach(function(track) {
 			track.stop();
 		});
