@@ -77,7 +77,7 @@ function gotDevices(deviceInfos) {
 	var audioInputSelect = document.querySelectorAll('select#change');
 	for ( var selector = 0; selector < audioInputSelect.length; selector++) {
 		var newInputSelector = masterInputSelector.cloneNode(true);
-		newInputSelector.addEventListener('onchange', changeAudioDestination);
+		newInputSelector.addEventListener('change', changeAudioDestination);
 		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
 	}
 	
