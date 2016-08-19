@@ -85,9 +85,7 @@ function gotDevices(deviceInfos) {
 }
 	
 function changeAudioDestination(event) {
-	var deviceId = event.target.value;
-	var InputSelector = event.target;
-	var element = event.path[2].childNodes[1];
+	var InputSelector = event.path[0];
 	console.log(event);
 	initAudio(InputSelector);
 }
@@ -122,7 +120,7 @@ function initAudio(index) {
 		});
 	}
 	
-	var audioSource = document.querySelectorAll('select#change')[index].value;
+	var audioSource = index.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
