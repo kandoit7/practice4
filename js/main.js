@@ -12,6 +12,7 @@ var audioInput = null,
     audioRecorder = null;
 var Track = null;    
 var rafID = null;
+var canvasID = null;
 var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
@@ -21,7 +22,7 @@ var changeGain = audioContext.createGain();
 
 function gotBuffers( buffers ) {
 	console.log(buffers);
-	console.log(event);
+	console.log(canvasID);
    	var canvas = document.getElementById(event.target.previousElementSibling.id);
 	//reference audiodisplay.js 
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
@@ -32,6 +33,7 @@ function gotBuffers( buffers ) {
 
 
 function toggleRecording( e ) {
+	canvasID = e.id;
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
