@@ -20,7 +20,7 @@ var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
 
 function gotBuffers( buffers ) {
-	console.log(buffer);
+	console.log(buffers);
    	var canvas = document.getElementById(event.target.previousElementSibling.id);
 	//reference audiodisplay.js 
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
