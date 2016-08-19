@@ -42,19 +42,17 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-
+	/*
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
 		option.value = deviceInfo.deviceId;
-
 		if (deviceInfo.kind === 'audioinput') {
 			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
 			masterInputSelector.appendChild(option);
-		} else {
 		}
 	}
-	
+	*/
 	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
