@@ -30,7 +30,7 @@ function gotBuffers( event, buffers ) {
 
 
 function toggleRecording( e ) {
-	console.log(e);
+	console.log(e.parent);
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
