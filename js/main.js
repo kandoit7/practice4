@@ -103,7 +103,7 @@ function initAudio() {
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
-	navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+	navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
 	console.log("initAudio");
 }
 
@@ -113,6 +113,6 @@ function handleError(error) {
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 var changeInput = document.querySelectorAll('select');
-changeInput.onchange = initAudio();
+changeInput.onchange = initAudio;
 initAudio();
 
