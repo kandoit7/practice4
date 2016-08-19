@@ -20,16 +20,17 @@ var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
 
 function gotBuffers( buffers ) {
-    var canvas = document.getElementById( "wavedisplayo" );
+   	var canvas = document.getElementById( "wavedisplayo" );
 	//reference audiodisplay.js 
-    drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
-    // the ONLY time gotBuffers is called is right after a new recording is completed - 
-    // so here's where we should set up the download.
-    // audioRecorder.exportWAV( doneEncoding );
+	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
+	// the ONLY time gotBuffers is called is right after a new recording is completed - 
+	// so here's where we should set up the download.
+	// audioRecorder.exportWAV( doneEncoding );
 }
 
 
 function toggleRecording( e ) {
+	console.log(e);
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
@@ -79,9 +80,7 @@ function gotDevices(deviceInfos) {
 		var newInputSelector = masterInputSelector.cloneNode(true);
 		newInputSelector.addEventListener('change', changeAudioDestination);
 		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
-		
 	}
-	console.log("gotDevices");
 }
 	
 function changeAudioDestination(event) {
