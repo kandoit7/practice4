@@ -1,6 +1,9 @@
 
 var masterInputSelector = document.createElement('select');
 
+var audioInputSelect = document.querySelector('select#audioSource');
+var selectors = [audioInputSelect];
+
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
@@ -43,7 +46,22 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-
+	var values = selectors.map(function(select) {
+		return select.value;
+	});
+	selectors.forEach(function(select) {
+		while (select.firstChild) {
+			select.removeChild(select.firstChild);
+		}
+	});
+	selectors.forEach(function(select, selectorIndex) {
+		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
+			return n.value === values[selectorIndex];
+		})) {
+			select.value = values[selectorIndex];
+		}
+	});
+	
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
