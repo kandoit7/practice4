@@ -42,7 +42,7 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-	/*
+	
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
@@ -52,14 +52,14 @@ function gotDevices(deviceInfos) {
 			masterInputSelector.appendChild(option);
 		}
 	}
-	*/
+	/*
 	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
     		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-  	
+  	*/
 }
 
 function changeAudioDestination(event) {
