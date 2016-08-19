@@ -23,6 +23,7 @@ var changeGain = audioContext.createGain();
 function gotBuffers( buffers ) {
 	console.log(buffers);
    	var canvas = document.getElementsByClassName(canvasID);
+   	var canvast = document.getElementById('wavedisplayo');
 	console.log(canvas);
 	//reference audiodisplay.js 
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
