@@ -35,15 +35,14 @@ function toggleRecording( e ) {
 	canvasID = e.id;
 	var lrecord = "l" + e.id;
 	var imgchange = e;
+	
+	var link = document.getElementById('save');
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
 		e.classList.remove("recording");
 		audioRecorder.getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
-		var link = document.getElementById('save');
-		var tracklink = document.getElementById(lrecord);
-		tracklink.href = link.href;
 	} else {
 	// start recording
 		if (!audioRecorder)
@@ -53,6 +52,9 @@ function toggleRecording( e ) {
 		audioRecorder.record();
 		imgchange.src = 'images/micrec.png'
 	}
+	
+	var tracklink = document.getElementById(lrecord);
+	tracklink.href = link.href
 }
 
 function doneEncoding( blob ) {
