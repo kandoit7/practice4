@@ -1,5 +1,4 @@
 var masterInputSelector = document.createElement('select');
-var selectors = [masterInputSelector];
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -43,53 +42,26 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-	/*
-	var values = selectors.map(function(select) {
-		return select.value;
-	});
 
-	selectors.forEach(function(select) {
-		while (select.firstChild) {
-			select.removeChild(select.firstChild);
-		}
-	});
-	*/
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
 		option.value = deviceInfo.deviceId;
-		/*
-		if (deviceInfo.kind === 'audioinput') {
-			option.text = deviceInfo.label ||
-			'microphone ' + (audioInputSelect1.length + 1);
-			audioInputSelect1.appendChild(option);
-		} else {
-			console.log('Some other kind of source/device: ', deviceInfo);
-		}
-		*/
+
 		if (deviceInfo.kind === 'audioinput') {
 			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
 			masterInputSelector.appendChild(option);
 		} else {
 		}
 	}
-	/*
-	selectors.forEach(function(select, selectorIndex) {
-		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
-			return n.value === values[selectorIndex];
-		})) {
-			select.value = values[selectorIndex];
-		}
-	});
-	*/
-	/*
+	
 	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
     		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-  	*/
+  	
 }
 
 function changeAudioDestination(event) {
@@ -139,6 +111,6 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-masterInputSelector.onchange = initAudio;
+//masterInputSelector.onchange = initAudio;
 initAudio();
 
