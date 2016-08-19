@@ -111,7 +111,7 @@ function gotStream(stream) {
 		});
 	}
 	
-	var audioSource = audioInputSelect.value;
+	var audioSource = document.querySelectorAll('select').value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
