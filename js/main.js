@@ -110,6 +110,6 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-//masterInputSelector.onchange = initAudio;
+masterInputSelector.onchange = initAudio;
 initAudio();
 
