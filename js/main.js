@@ -1,5 +1,7 @@
 
 var masterInputSelector = document.createElement('select');
+var audioInputSelect = document.querySelector('select#audioSource');
+var selectors = [audioInputSelect];
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -43,8 +45,7 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-	
-	
+	/*
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
@@ -61,14 +62,41 @@ function gotDevices(deviceInfos) {
     		newInputSelector.addEventListener('change', changeAudioDestination);
     		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-  	console.log("gotDevices");
+  	*/
+	var values = selectors.map(function(select) {
+		return select.value;
+	});
+	selectors.forEach(function(select) {
+		while (select.firstChild) {
+			select.removeChild(select.firstChild);
+		}
+	});
+	for (var i = 0; i !== deviceInfos.length; ++i) {
+		var deviceInfo = deviceInfos[i];
+		var option = document.createElement('option');
+		option.value = deviceInfo.deviceId;
+		if (deviceInfo.kind === 'audioinput') {
+			option.text = deviceInfo.label || 'microphone ' + (audioInputSelect.length + 1);
+			audioInputSelect.appendChild(option);
+		} else {
+			//console.log('Some other kind of source/device: ', deviceInfo);
+		}
+	}
+	selectors.forEach(function(select, selectorIndex) {
+		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
+			return n.value === values[selectorIndex];
+		})) {
+		select.value = values[selectorIndex];
+		}
+	});
+	console.log("gotDevices");
 }
-
+	
 function changeAudioDestination(event) {
 	var deviceId = event.target.value;
 	var element = event.path[2].childNodes[1];
 }
-
+	
 function gotStream(stream) {
 	window.stream = stream; // make stream available to console
 	// Create an AudioNode from the stream.
@@ -90,17 +118,17 @@ function gotStream(stream) {
 	changeGain.connect(audioContext.destination);
 	
 	return navigator.mediaDevices.enumerateDevices();
-}
-
-function initAudio() {
+	}
+	
+	function initAudio() {
 	if (window.stream) {
 		console.log("not");
 		window.stream.getTracks().forEach(function(track) {
 			track.stop();
 		});
 	}
-
-	var audioSource = masterInputSelector.value;
+	
+	var audioSource = audioInputSelect.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
@@ -113,7 +141,7 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-var changeInput = document.querySelectorAll('select#change');
-changeInput.onchange = initAudio;
+//var changeInput = document.querySelectorAll('select#change');
+audioInputSelect.onchange = initAudio;
 initAudio();
 
