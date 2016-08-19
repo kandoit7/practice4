@@ -1,5 +1,6 @@
 var masterInputSelector = document.createElement('select');
 var selectors = [masterInputSelector];
+
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
@@ -72,7 +73,7 @@ function gotDevices(deviceInfos) {
 		} else {
 		}
 	}
-	
+	/*
 	selectors.forEach(function(select, selectorIndex) {
 		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
 			return n.value === values[selectorIndex];
@@ -80,7 +81,7 @@ function gotDevices(deviceInfos) {
 			select.value = values[selectorIndex];
 		}
 	});
-	
+	*/
 	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
