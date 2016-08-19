@@ -21,7 +21,7 @@ var changeGain = audioContext.createGain();
 
 function gotBuffers( buffers ) {
 	console.log(event);
-   	var canvas = document.getElementByClass( index);
+   	var canvas = document.getElementByClass( event.target.previousElementSibling);
 	//reference audiodisplay.js 
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 	// the ONLY time gotBuffers is called is right after a new recording is completed - 
