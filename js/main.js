@@ -124,7 +124,7 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-//var changeInput = document.querySelectorAll('select#change');
-audioInputSelect.onchange = initAudio;
+var changeInput = document.querySelectorAll('select#change');
+changeInput.onchange = initAudio;
 initAudio();
 
