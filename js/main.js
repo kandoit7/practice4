@@ -1,7 +1,6 @@
 
 var masterInputSelector = document.createElement('select');
-var audioInputSelect = document.querySelectorAll('select');
-
+var audioInputSelect = null; 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
@@ -55,7 +54,8 @@ function gotDevices(deviceInfos) {
 		}
 	}
 	
-	
+	audioInputSelect = document.querySelectorAll('select');
+
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
