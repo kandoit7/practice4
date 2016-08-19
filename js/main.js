@@ -122,7 +122,7 @@ function initAudio(index) {
 		});
 	}
 	
-	var audioSource = document.querySelectorAll('select#change').value;
+	var audioSource = document.querySelectorAll('select#change')[index].value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
