@@ -1,6 +1,4 @@
-
-var audioInputSelect1 = document.querySelector('select');
-var selectors = [audioInputSelect1];
+var masterInputSelector = document.createElement('select');
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -139,6 +137,6 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-audioInputSelect1.onchange = initAudio;
+masterInputSelector.onchange = initAudio;
 initAudio();
 
