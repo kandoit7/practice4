@@ -16,6 +16,7 @@ var canvasID = null;
 var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
+var lrecord = null;
 
 var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
@@ -30,13 +31,16 @@ function gotBuffers( buffers ) {
 	audioRecorder.exportWAV( doneEncoding );
 }
 
-
+function play() {
+	var link = document.getElementById('save');
+	var tracklink = document.getElementById(lrecord);
+	tracklink.href = link.href
+}
 function toggleRecording( e ) {
 	canvasID = e.id;
-	var lrecord = "l" + e.id;
+	lrecord = "l" + e.id;
 	var imgchange = e;
 	
-	var link = document.getElementById('save');
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
@@ -53,8 +57,6 @@ function toggleRecording( e ) {
 		imgchange.src = 'images/micrec.png'
 	}
 	
-	var tracklink = document.getElementById(lrecord);
-	tracklink.href = link.href
 }
 
 function doneEncoding( blob ) {
