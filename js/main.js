@@ -31,10 +31,13 @@ function gotBuffers( buffers ) {
 	audioRecorder.exportWAV( doneEncoding );
 }
 
-function play() {
+function play(event) {
+	console.log(event);
 	var link = document.getElementById('save');
 	var tracklink = document.getElementById(lrecord);
 	tracklink.href = link.href
+	var track = new Audio(tracklink.href);
+	track.play();
 }
 function toggleRecording( e ) {
 	canvasID = e.id;
