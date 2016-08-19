@@ -33,7 +33,8 @@ function gotBuffers( buffers ) {
 	audioRecorder.exportWAV( doneEncoding );
 }
 
-function play() {
+function play( e ) {
+	console.log(e.id);
 	tracklink = document.getElementById(lrecord);
 	tracklink.href = link.href
 	var track = new Audio(tracklink.href);
