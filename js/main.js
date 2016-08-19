@@ -52,14 +52,14 @@ function gotDevices(deviceInfos) {
 			masterInputSelector.appendChild(option);
 		}
 	}
-	/*
-	var audioInputSelect = document.querySelectorAll('select');
+	
+	var audioInputSelect = null; //document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
     		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-  	*/
+  	
 }
 
 function changeAudioDestination(event) {
