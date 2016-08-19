@@ -1,7 +1,5 @@
 
-//var masterInputSelector = document.createElement('select');
-var audioInputSelect = document.querySelectorAll('select#change');
-var selectors = [audioInputSelect];
+var masterInputSelector = document.createElement('select');
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -46,32 +44,25 @@ function toggleRecording( e ) {
 
 function gotDevices(deviceInfos) {
 
-	var values = selectors.map(function(select) {
-		return select.value;
-	});
-	selectors.forEach(function(select) {
-		while (select.firstChild) {
-			select.removeChild(select.firstChild);
-		}
-	});
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
 		option.value = deviceInfo.deviceId;
 		if (deviceInfo.kind === 'audioinput') {
-			option.text = deviceInfo.label || 'microphone ' + (audioInputSelect.length + 1);
-			audioInputSelect.appendChild(option);
+			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
+			masterInputSelector.appendChild(option);
 		} else {
 			//console.log('Some other kind of source/device: ', deviceInfo);
 		}
 	}
-	selectors.forEach(function(select, selectorIndex) {
-		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
-			return n.value === values[selectorIndex];
-		})) {
-		select.value = values[selectorIndex];
-		}
-	});
+	
+	var audioInputSelect = document.querySelectorAll('select#change');
+	for ( var selector = 0; selector < audioInputSelect.length; selector++) {
+		var newInputSelector = masterInputSelector.cloneNode(true);
+		newInputSelector.addEventListner('onchange', changeAudioDestination);
+		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
+	}
+	
 	console.log("gotDevices");
 }
 	
