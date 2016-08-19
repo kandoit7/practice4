@@ -54,7 +54,7 @@ function gotDevices(deviceInfos) {
 		}
 	}
 	
-	var audioInputSelect = null; //document.querySelectorAll('select');
+	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
