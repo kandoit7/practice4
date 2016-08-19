@@ -36,11 +36,14 @@ function gotBuffers( buffers ) {
 
 function toggleRecording( e ) {
 	canvasID = e.id;
+	var imgchange = e;
+	console.log(e);
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
 		e.classList.remove("recording");
 		audioRecorder.getBuffers( gotBuffers );
+		imgchange.src = 'images/mic.png'
 	} else {
 	// start recording
 		if (!audioRecorder)
@@ -48,6 +51,7 @@ function toggleRecording( e ) {
 		e.classList.add("recording");
 		audioRecorder.clear();
 		audioRecorder.record();
+		imgchange.src = 'images/micrec.png'
 	}
 }
 
