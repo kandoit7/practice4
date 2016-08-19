@@ -77,14 +77,14 @@ function gotDevices(deviceInfos) {
 	var audioInputSelect = document.querySelectorAll('select#change');
 	for ( var selector = 0; selector < audioInputSelect.length; selector++) {
 		var newInputSelector = masterInputSelector.cloneNode(true);
-		newInputSelector.addEventListener('change', changeAudioDestination(selector));
+		newInputSelector.addEventListener('change', changeAudioDestination);
 		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
 		
 	}
 	console.log("gotDevices");
 }
 	
-function changeAudioDestination(index, event) {
+function changeAudioDestination(event) {
 	var deviceId = event.target.value;
 	var element = event.path[2].childNodes[1];
 	console.log(event);
