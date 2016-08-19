@@ -22,7 +22,7 @@ var changeGain = audioContext.createGain();
 
 function gotBuffers( buffers ) {
 	console.log(buffers);
-	var ci = t+canvasID;
+	var ci = "c"+canvasID;
 	console.log(ci);
    	var canvas = document.getElementsByClassName(canvasID);
    	console.log(canvas);
