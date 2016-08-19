@@ -31,8 +31,8 @@ function gotBuffers( buffers ) {
 	audioRecorder.exportWAV( doneEncoding );
 }
 
-function play(event) {
-	console.log(event);
+function play( e ) {
+	console.log( e );
 	var link = document.getElementById('save');
 	var tracklink = document.getElementById(lrecord);
 	tracklink.href = link.href
@@ -106,7 +106,6 @@ function gotDevices(deviceInfos) {
 	
 function changeAudioDestination(event) {
 	var InputSelector = event.path[0];
-	console.log(event);
 	initAudio(InputSelector);
 }
 	
@@ -145,7 +144,6 @@ function initAudio(index) {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
 	navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
-	console.log(audioSource);
 }
 
 function handleError(error) {
