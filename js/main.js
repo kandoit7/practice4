@@ -97,7 +97,7 @@ function initAudio() {
 		});
 	}
 
-	var audioSource = masterInputSelector.value;
+	var audioSource = audioInputSelect.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
