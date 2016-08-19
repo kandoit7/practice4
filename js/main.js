@@ -19,7 +19,7 @@ var recIndex = 0;
 var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
 
-function gotBuffers( event, buffers ) {
+function gotBuffers( buffers ,event ) {
 	console.log(buffers);
 	console.log(event);
    	var canvas = document.getElementById(event.target.previousElementSibling.id);
