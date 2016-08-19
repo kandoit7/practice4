@@ -61,7 +61,7 @@ function gotDevices(deviceInfos) {
     		newInputSelector.addEventListener('change', changeAudioDestination);
     		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
   	}
-  	
+  	console.log("gotDevices");
 }
 
 function changeAudioDestination(event) {
@@ -113,6 +113,6 @@ function handleError(error) {
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 var changeInput = document.querySelectorAll('select');
-changeInput.onchange = initAudio;
+changeInput.onchange = gotDevices;
 initAudio();
 
