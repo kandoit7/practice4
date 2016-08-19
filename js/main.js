@@ -33,7 +33,7 @@ function gotBuffers( buffers ) {
 
 
 function toggleRecording( e ) {
-	canvasID = e;
+	canvasID = e.id;
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
