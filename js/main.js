@@ -94,6 +94,7 @@ function gotStream(stream) {
 
 function initAudio() {
 	if (window.stream) {
+		console.log("not");
 		window.stream.getTracks().forEach(function(track) {
 			track.stop();
 		});
@@ -113,6 +114,6 @@ function handleError(error) {
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 var changeInput = document.querySelectorAll('select#change');
-changeInput.onchange = gotDevices;
+changeInput.onchange = initAudio;
 initAudio();
 
