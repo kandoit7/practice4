@@ -1,5 +1,5 @@
 var masterInputSelector = document.createElement('select');
-
+var selectors = [masterInputSelector];
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
