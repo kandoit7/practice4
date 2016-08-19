@@ -86,9 +86,10 @@ function gotDevices(deviceInfos) {
 	
 function changeAudioDestination(event) {
 	var deviceId = event.target.value;
+	var InputSelector = event.target;
 	var element = event.path[2].childNodes[1];
 	console.log(event);
-	initAudio(1);
+	initAudio(InputSelector);
 }
 	
 function gotStream(stream) {
