@@ -18,6 +18,7 @@ var canvasWidth, canvasHeight;
 var recIndex = 0;
 var lrecord = null;
 var firstlink = null;
+var tracklink = null;
 
 var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
@@ -48,7 +49,7 @@ function toggleRecording( e ) {
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
-		var tracklink = document.getElementById(lrecord);
+		tracklink = document.getElementById(lrecord);
 		tracklink.href = link.href
 	} else {
 	// start recording
