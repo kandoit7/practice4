@@ -19,9 +19,9 @@ var recIndex = 0;
 var inputPoint = audioContext.createGain();
 var changeGain = audioContext.createGain();
 
-function gotBuffers( event, buffers ) {
+function gotBuffers( index, buffers ) {
 	console.log(event);
-   	var canvas = document.getElementById( event.id);
+   	var canvas = document.getElementByClass( index);
 	//reference audiodisplay.js 
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 	// the ONLY time gotBuffers is called is right after a new recording is completed - 
@@ -31,12 +31,12 @@ function gotBuffers( event, buffers ) {
 
 
 function toggleRecording( e ) {
-	console.log(e);
+	var index = e.id;
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
 		e.classList.remove("recording");
-		audioRecorder.getBuffers( gotBuffers );
+		audioRecorder.getBuffers( gotBuffers(index) );
 	} else {
 	// start recording
 		if (!audioRecorder)
