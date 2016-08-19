@@ -87,7 +87,8 @@ function gotDevices(deviceInfos) {
 function changeAudioDestination(event) {
 	var deviceId = event.target.value;
 	var element = event.path[2].childNodes[1];
-	initAudio();
+	console.log(event);
+	initAudio(0);
 }
 	
 function gotStream(stream) {
@@ -113,14 +114,14 @@ function gotStream(stream) {
 	return navigator.mediaDevices.enumerateDevices();
 	}
 	
-	function initAudio() {
+function initAudio(index) {
 	if (window.stream) {
 		window.stream.getTracks().forEach(function(track) {
 			track.stop();
 		});
 	}
 	
-	var audioSource = document.querySelectorAll('select').value;
+	var audioSource = document.querySelectorAll('select#change')[index].value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
@@ -135,5 +136,5 @@ function handleError(error) {
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 var changeInput = document.querySelectorAll('select#change');
 changeInput.onchange = initAudio;
-initAudio();
+initAudio(0);
 
