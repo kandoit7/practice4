@@ -34,12 +34,15 @@ function gotBuffers( buffers ) {
 }
 
 function play() {
+	tracklink = document.getElementById(lrecord);
+	tracklink.href = link.href
 	var track = new Audio(tracklink.href);
 	track.play();
 }
+
 function down() {
-	tracklink.href = link.href
 }
+
 function toggleRecording( e ) {
 	canvasID = e.id;
 	var imgchange = e;
@@ -52,8 +55,6 @@ function toggleRecording( e ) {
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
-		tracklink = document.getElementById(lrecord);
-		down();
 	} else {
 	// start recording
 		if (!audioRecorder)
