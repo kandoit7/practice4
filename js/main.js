@@ -31,12 +31,11 @@ function gotBuffers( buffers ) {
 
 
 function toggleRecording( e ) {
-	var index = e.id;
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
 		e.classList.remove("recording");
-		audioRecorder.getBuffers( gotBuffers );
+		audioRecorder.getBuffers( gotBuffers(e) );
 	} else {
 	// start recording
 		if (!audioRecorder)
