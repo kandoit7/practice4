@@ -1,4 +1,4 @@
-var masterInputSelector = document.createElement('select');
+
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -42,6 +42,7 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
+	var masterInputSelector = document.createElement('select');
 	
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
