@@ -36,7 +36,7 @@ function toggleRecording( e ) {
 	// stop recording
 		audioRecorder.stop();
 		e.classList.remove("recording");
-		audioRecorder.getBuffers( gotBuffers(index) );
+		audioRecorder.getBuffers( gotBuffers );
 	} else {
 	// start recording
 		if (!audioRecorder)
