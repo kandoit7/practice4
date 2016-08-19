@@ -1,5 +1,6 @@
 
 var masterInputSelector = document.createElement('select');
+var audioInputSelect = document.querySelectorAll('select');
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -54,7 +55,7 @@ function gotDevices(deviceInfos) {
 		}
 	}
 	
-	var audioInputSelect = document.querySelectorAll('select');
+	
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
@@ -111,6 +112,6 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-masterInputSelector.onchange = initAudio;
+audioInputSelect.onchange = initAudio;
 initAudio();
 
