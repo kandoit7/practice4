@@ -1,6 +1,7 @@
 
 //var masterInputSelector = document.createElement('select');
-
+var audioInputSelect = document.querySelectorAll('select#change');
+var selectors = [audioInputSelect];
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -45,8 +46,6 @@ function toggleRecording( e ) {
 
 function gotDevices(deviceInfos) {
 
-	var audioInputSelect = document.querySelectorAll('select');
-	var selectors = [audioInputSelect];
 	var values = selectors.map(function(select) {
 		return select.value;
 	});
@@ -124,7 +123,7 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-var changeInput = document.querySelectorAll('select#change');
-changeInput.onchange = initAudio;
+//var changeInput = document.querySelectorAll('select#change');
+audioInputSelect.onchange = initAudio;
 initAudio();
 
