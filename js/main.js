@@ -1,5 +1,6 @@
 
-var audioInputSelect = document.querySelectorAll('select');
+var masterInputSelector = document.createElement('select');
+
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
@@ -43,7 +44,7 @@ function toggleRecording( e ) {
 
 function gotDevices(deviceInfos) {
 	
-	var masterInputSelector = document.createElement('select');
+	
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
@@ -54,6 +55,7 @@ function gotDevices(deviceInfos) {
 		}
 	}
 	
+	var audioInputSelect = document.querySelectorAll('select');
   	for (var selector = 0; selector < audioInputSelect.length; selector++) {
     		var newInputSelector = masterInputSelector.cloneNode(true);
     		newInputSelector.addEventListener('change', changeAudioDestination);
@@ -97,7 +99,7 @@ function initAudio() {
 		});
 	}
 
-	var audioSource = audioInputSelect.value;
+	var audioSource = masterInputSelector.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
 	};
@@ -110,6 +112,7 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-audioInputSelect.onchange = initAudio;
+var changeInput = querySelectorAll('select');
+changeInput.onchange = initAudio;
 initAudio();
 
