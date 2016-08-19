@@ -37,7 +37,7 @@ function play( e ) {
 	console.log(e);
 	var tracklink = document.createElement('a');
 	tracklink.id = lrecord;
-	tracklink.href = link.href
+	tracklink.href = link.href;
 	var track = new Audio(tracklink.href);
 	track.play();
 }
