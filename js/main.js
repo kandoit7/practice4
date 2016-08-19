@@ -35,7 +35,8 @@ function gotBuffers( buffers ) {
 
 function play( e ) {
 	console.log(e);
-	tracklink = document.getElementById(lrecord);
+	var tracklink = document.createElement('a');
+	tracklink.id = lrecord;
 	tracklink.href = link.href
 	var track = new Audio(tracklink.href);
 	track.play();
