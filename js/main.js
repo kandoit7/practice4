@@ -33,14 +33,11 @@ function gotBuffers( buffers ) {
 }
 
 function play() {
-	var tracklink = document.getElementById(lrecord);
-	tracklink.href = link.href
 	var track = new Audio(tracklink.href);
 	track.play();
 }
 function toggleRecording( e ) {
 	canvasID = e.id;
-	lrecord = "l" + e.id;
 	var imgchange = e;
 	
 	if (e.classList.contains("recording")) {
@@ -50,6 +47,9 @@ function toggleRecording( e ) {
 		audioRecorder.getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
+		lrecord = "l" + e.id;
+		var tracklink = document.getElementById(lrecord);
+		tracklink.href = link.href
 	} else {
 	// start recording
 		if (!audioRecorder)
