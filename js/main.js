@@ -42,8 +42,7 @@ function toggleRecording( e ) {
 }
 
 function gotDevices(deviceInfos) {
-	var masterInputSelector = document.createElement('select');
-	
+	/*
 	var values = selectors.map(function(select) {
 		return select.value;
 	});
@@ -53,7 +52,7 @@ function gotDevices(deviceInfos) {
 			select.removeChild(select.firstChild);
 		}
 	});
-	
+	*/
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
