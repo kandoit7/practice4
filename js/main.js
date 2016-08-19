@@ -79,15 +79,15 @@ function gotDevices(deviceInfos) {
 		var newInputSelector = masterInputSelector.cloneNode(true);
 		newInputSelector.addEventListener('change', changeAudioDestination);
 		audioInputSelect[selector].parentNode.replaceChild(newInputSelector, audioInputSelect[selector]);
-		console.log(selector);
+		
 	}
-	
-	
+	console.log("gotDevices");
 }
 	
 function changeAudioDestination(event) {
 	var deviceId = event.target.value;
 	var element = event.path[2].childNodes[1];
+	initAudio();
 }
 	
 function gotStream(stream) {
