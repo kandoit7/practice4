@@ -19,10 +19,6 @@ var recIndex = 0;
 var lrecord = null;
 var firstlink = null;
 var tracklink = null;
-var recordRecorder = null;
-var record2Recorder = null;
-var record3Recorder = null;
-var record4Recorder = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -134,10 +130,6 @@ function gotStream(stream) {
 	inputPoint.connect( analyserNode );
 	
 	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
-	//if ( recordRecorder == null ) { recordRecorder = audioRecorder; }
-	//if ( recordRecorder == audioRecorder || record2Recorder == null ) { record2Recorder = audioRecorder; }
-	//if ( record2Recorder == audioRecorder || record3Recorder == null ) { record3Recorder = audioRecorder; }
-	//if ( record3Recorder == audioRecorder || record4Recorder == null ) { record4Recorder = audioRecorder; }
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
