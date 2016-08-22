@@ -114,6 +114,7 @@ function changeAudioDestination(event) {
 	
 function gotStream(stream) {
 	window.stream = stream; // make stream available to console
+	console.log(event);
 	// Create an AudioNode from the stream.
 	var realAudioInput = audioContext.createMediaStreamSource(stream);
 	var audioInput = realAudioInput;
@@ -121,8 +122,7 @@ function gotStream(stream) {
 	var inputPoint = audioContext.createGain();
 	inputPoint.gain.value = 1.0;
 	audioInput.connect(inputPoint);
-	
-	//    audioInput = convertToMono( input );
+	//audioInput = convertToMono( input );
 	
 	analyserNode = audioContext.createAnalyser();
 	analyserNode.fftSize = 2048;
