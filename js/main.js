@@ -7,9 +7,9 @@ var masterInputSelector = document.createElement('select');
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
-var audioInput = null,
-    audioRecorder = null;
-    //realAudioInput = null,
+//var audioInput = null;
+var audioRecorder = null;
+//var realAudioInput = null;
 var Track = null;    
 var rafID = null;
 var canvasID = null;
@@ -122,7 +122,7 @@ function gotStream(stream) {
 	window.stream = stream; // make stream available to console
 	// Create an AudioNode from the stream.
 	var realAudioInput = audioContext.createMediaStreamSource(stream);
-	audioInput = realAudioInput;
+	var audioInput = realAudioInput;
 	audioInput.connect(inputPoint);
 	
 	//    audioInput = convertToMono( input );
