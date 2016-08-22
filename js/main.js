@@ -23,6 +23,7 @@ var recordRecorder = null;
 var record2Recorder = null;
 var record3Recorder = null;
 var record4Recorder = null;
+var recorderr = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -50,7 +51,6 @@ function down() {
 function toggleRecording( e ) {
 	canvasID = e.id;
 	console.log(e.id);
-	var recorderr = null;
 	if(canvasID == "record") { recorderr == recordRecorder; }
 	if(canvasID == "record2") { recorderr == record2Recorder; }
 	if(canvasID == "record3") { recorderr == record3Recorder; }
