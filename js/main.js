@@ -31,7 +31,18 @@ function gotBuffers( buffers ) {
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 	// the ONLY time gotBuffers is called is right after a new recording is completed - 
 	// so here's where we should set up the download.
-	audioRecorder.exportWAV( doneEncoding );
+	if ( canvasID == "record" ) {
+		recordRecorder.exportWAV( doneEncoding );
+	}
+	if ( canvasID == "record2" ) {
+		record2Recorder.exportWAV( doneEncoding );
+	}
+	if ( canvasID == "record3" ) {
+		record3Recorder.exportWAV( doneEncoding );
+	}
+	if ( canvasID == "record4" ) {
+		record4Recorder.exportWAV( doneEncoding );
+	}
 }
 
 function play( e ) {
