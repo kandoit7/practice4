@@ -50,8 +50,12 @@ function down() {
 function toggleRecording( e ) {
 	canvasID = e.id;
 	console.log(e.id);
-	var imgchange = e;
-	var recorderr = e.id+"Recorder";
+	var recorderr = null;
+	if(canvasID == "record") { recorderr == recordRecorder; }
+	if(canvasID == "record2") { recorderr == record2Recorder; }
+	if(canvasID == "record3") { recorderr == record3Recorder; }
+	if(canvasID == "record4") { recorderr == record4Recorder; }
+	
 	console.log(recorderr);
 	if (e.classList.contains("recording")) {
 	// stop recording
