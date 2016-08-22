@@ -65,8 +65,8 @@ function toggleRecording( e ) {
 		lrecord = "l" + e.id;
 	} else {
 	// start recording  (audioRecorder => recorderr  change)
-		if (!recorderr)
-	    		return;
+		//if (!recorderr)
+	    	//	return;
 	
 		if(canvasID == "record") { recorderr = recordRecorder; }
 		if(canvasID == "record2") { recorderr = record2Recorder; }
