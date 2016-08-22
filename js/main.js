@@ -20,9 +20,6 @@ var lrecord = null;
 var firstlink = null;
 var tracklink = null;
 
-var inputPoint = audioContext.createGain();
-var changeGain = audioContext.createGain();
-
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
    	var canvas = document.getElementById(ci);
@@ -123,6 +120,9 @@ function gotStream(stream) {
 	// Create an AudioNode from the stream.
 	var realAudioInput = audioContext.createMediaStreamSource(stream);
 	var audioInput = realAudioInput;
+	
+	var inputPoint = audioContext.createGain();
+	inputPoint.gain.value = 1.0;
 	audioInput.connect(inputPoint);
 	
 	//    audioInput = convertToMono( input );
