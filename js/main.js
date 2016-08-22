@@ -23,7 +23,6 @@ var recordRecorder = null;
 var record2Recorder = null;
 var record3Recorder = null;
 var record4Recorder = null;
-var recorderr = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -32,8 +31,7 @@ function gotBuffers( buffers ) {
 	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 	// the ONLY time gotBuffers is called is right after a new recording is completed - 
 	// so here's where we should set up the download.
-	recorderr.exportWAV( doneEncoding );
-	//audioRecorder.exportWAV( doneEncoding );
+	audioRecorder.exportWAV( doneEncoding );
 }
 
 function play( e ) {
@@ -54,28 +52,28 @@ function toggleRecording( e ) {
 	var imgchange = e;
 	
 	
-	console.log(recorderr);
+	console.log(audioRecorder);
 	
 	if (e.classList.contains("recording")) {
 	// stop recording
-		recorderr.stop();
+		audioRecorder.stop();
 		e.classList.remove("recording");
-		recorderr.getBuffers( gotBuffers );
+		audioRecorder.getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
 	} else {
-	// start recording  (audioRecorder => recorderr  change)
+	// start recording  
 		//if (!recorderr)
 	    	//	return;
 	
-		if(canvasID == "record") { recorderr = recordRecorder; }
-		if(canvasID == "record2") { recorderr = record2Recorder; }
-		if(canvasID == "record3") { recorderr = record3Recorder; }
-		if(canvasID == "record4") { recorderr = record4Recorder; }
+		if(canvasID == "record") { audioRecorder = recordRecorder; }
+		if(canvasID == "record2") { audioRecorder = record2Recorder; }
+		if(canvasID == "record3") { audioRecorder = record3Recorder; }
+		if(canvasID == "record4") { audioRecorder = record4Recorder; }
 		e.classList.add("recording");
-		recorderr.clear();
-		recorderr.record();
+		audioRecorder.clear();
+		audioRecorder.record();
 		imgchange.src = 'images/micrec.png'
 	}
 }
