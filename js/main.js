@@ -28,31 +28,10 @@ function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
    	var canvas = document.getElementById(ci);
 	//reference audiodisplay.js 
-	
-	if ( canvasID == "record" ) {
-		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
-		// the ONLY time gotBuffers is called is right after a new recording is completed - 
-		// so here's where we should set up the download.
-		recordRecorder.exportWAV( doneEncoding );
-	}
-	if ( canvasID == "record2" ) {
-		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
-		// the ONLY time gotBuffers is called is right after a new recording is completed - 
-		// so here's where we should set up the download.
-		record2Recorder.exportWAV( doneEncoding );
-	}
-	if ( canvasID == "record3" ) {
-		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
-		// the ONLY time gotBuffers is called is right after a new recording is completed - 
-		// so here's where we should set up the download.
-		record3Recorder.exportWAV( doneEncoding );
-	}
-	if ( canvasID == "record4" ) {
-		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
-		// the ONLY time gotBuffers is called is right after a new recording is completed - 
-		// so here's where we should set up the download.
-		record4Recorder.exportWAV( doneEncoding );
-	}
+	drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
+	// the ONLY time gotBuffers is called is right after a new recording is completed - 
+	// so here's where we should set up the download.
+	recordRecorder.exportWAV( doneEncoding );
 }
 
 function play( e ) {
@@ -71,85 +50,23 @@ function down() {
 function toggleRecording( e ) {
 	canvasID = e.id;
 	var imgchange = e;
-	if ( canvasID == "record" ) {
-		if (e.classList.contains("recording")) {
-		// stop recording
-			recordRecorder.stop();
-			e.classList.remove("recording");
-			recordRecorder.getBuffers( gotBuffers );
-			imgchange.src = 'images/mic.png'
-			link = document.getElementById('save');
-			lrecord = "l" + e.id;
-		} else {
-		// start recording  
-			if (!recordRecorder)
-		    		return;
-		
-			e.classList.add("recording");
-			recordRecorder.clear();
-			recordRecorder.record();
-			imgchange.src = 'images/micrec.png'
-		}
-	}
-	if ( canvasID == "record2" ) {
-		if (e.classList.contains("recording")) {
-		// stop recording
-			record2Recorder.stop();
-			e.classList.remove("recording");
-			record2Recorder.getBuffers( gotBuffers );
-			imgchange.src = 'images/mic.png'
-			link = document.getElementById('save');
-			lrecord = "l" + e.id;
-		} else {
-		// start recording  
-			if (!record2Recorder)
-		    		return;
-		
-			e.classList.add("recording");
-			record2Recorder.clear();
-			record2Recorder.record();
-			imgchange.src = 'images/micrec.png'
-		}
-	}
-	if ( canvasID == "record3" ) {
-		if (e.classList.contains("recording")) {
-		// stop recording
-			record3Recorder.stop();
-			e.classList.remove("recording");
-			record3Recorder.getBuffers( gotBuffers );
-			imgchange.src = 'images/mic.png'
-			link = document.getElementById('save');
-			lrecord = "l" + e.id;
-		} else {
-		// start recording  
-			if (!record3Recorder)
-		    		return;
-		
-			e.classList.add("recording");
-			record3Recorder.clear();
-			record3Recorder.record();
-			imgchange.src = 'images/micrec.png'
-		}
-	}
-	if ( canvasID == "record4" ) {
-		if (e.classList.contains("recording")) {
-		// stop recording
-			record4Recorder.stop();
-			e.classList.remove("recording");
-			record4Recorder.getBuffers( gotBuffers );
-			imgchange.src = 'images/mic.png'
-			link = document.getElementById('save');
-			lrecord = "l" + e.id;
-		} else {
-		// start recording  
-			if (!record4Recorder)
-		    		return;
-		
-			e.classList.add("recording");
-			record4Recorder.clear();
-			record4Recorder.record();
-			imgchange.src = 'images/micrec.png'
-		}
+	if (e.classList.contains("recording")) {
+	// stop recording
+		audioRecorder.stop();
+		e.classList.remove("recording");
+		audioRecorder.getBuffers( gotBuffers );
+		imgchange.src = 'images/mic.png'
+		link = document.getElementById('save');
+		lrecord = "l" + e.id;
+	} else {
+	// start recording  
+		if (!audioRecorder)
+	    		return;
+	
+		e.classList.add("recording");
+		audioRecorder.clear();
+		audioRecorder.record();
+		imgchange.src = 'images/micrec.png'
 	}
 }
 
@@ -199,11 +116,7 @@ function gotStream(stream) {
 	analyserNode.fftSize = 2048;
 	inputPoint.connect( analyserNode );
 	
-	var audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
-	if( recordRecorder == null ) { recordRecorder = audioRecorder; }
-	if( record2Recorder == null || recordRecorder !== audioRecorder ) { record2Recorder = audioRecorder; }
-	if( record3Recorder == null || record2Recorder !== audioRecorder ) { record3Recorder = audioRecorder; }
-	if( record4Recorder == null || record3Recorder !== audioRecorder ) { record4Recorder = audioRecorder; }
+	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
