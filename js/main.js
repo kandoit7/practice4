@@ -37,13 +37,17 @@ function gotBuffers( buffers ) {
 
 function play( e ) {
 	console.log(e);
+	var track = new Audio(tracklink.href);
+	track.play();
+}
+
+function down( e ) {
+	console.log(e);
 	
 	var tracklink = document.createElement('a');
 	tracklink.id = lrecord;
 	tracklink.href = link.href;
 	e.appendChild(tracklink);
-	var track = new Audio(tracklink.href);
-	track.play();
 }
 
 function allplay() {
