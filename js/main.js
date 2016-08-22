@@ -64,7 +64,6 @@ function toggleRecording( e ) {
 		audioRecorder.record();
 		imgchange.src = 'images/micrec.png'
 	}
-	
 }
 
 function doneEncoding( blob ) {
@@ -97,8 +96,6 @@ function gotDevices(deviceInfos) {
 		if (deviceInfo.kind === 'audioinput') {
 			option.text = deviceInfo.label || 'microphone ' + (masterInputSelector.length + 1);
 			masterInputSelector.appendChild(option);
-		} else {
-			//console.log('Some other kind of source/device: ', deviceInfo);
 		}
 	}
 	
@@ -148,7 +145,7 @@ function initAudio(index) {
 			track.stop();
 		});
 	}
-	console.log(index);
+	
 	var audioSource = index.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
@@ -161,7 +158,5 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-//var changeInput = document.querySelectorAll('select#change');
-//changeInput.onchange = initAudio;
-initAudio();
+initAudio(0);
 
