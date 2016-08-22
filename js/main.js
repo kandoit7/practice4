@@ -57,11 +57,6 @@ function toggleRecording( e ) {
 	
 	if (e.classList.contains("recording")) {
 	// stop recording
-	
-		if(canvasID == "record") { recorderr = recordRecorder; }
-		if(canvasID == "record2") { recorderr = record2Recorder; }
-		if(canvasID == "record3") { recorderr = record3Recorder; }
-		if(canvasID == "record4") { recorderr = record4Recorder; }
 		recorderr.stop();
 		e.classList.remove("recording");
 		recorderr.getBuffers( gotBuffers );
@@ -72,6 +67,11 @@ function toggleRecording( e ) {
 	// start recording  (audioRecorder => recorderr  change)
 		if (!recorderr)
 	    		return;
+	
+		if(canvasID == "record") { recorderr = recordRecorder; }
+		if(canvasID == "record2") { recorderr = record2Recorder; }
+		if(canvasID == "record3") { recorderr = record3Recorder; }
+		if(canvasID == "record4") { recorderr = record4Recorder; }
 		e.classList.add("recording");
 		recorderr.clear();
 		recorderr.record();
