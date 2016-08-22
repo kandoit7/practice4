@@ -23,6 +23,7 @@ var recordRecorder = null;
 var record2Recorder = null;
 var record3Recorder = null;
 var record4Recorder = null;
+//var link = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -36,6 +37,7 @@ function gotBuffers( buffers ) {
 
 function play( e ) {
 	console.log(e);
+	
 	var tracklink = document.createElement('a');
 	tracklink.id = lrecord;
 	tracklink.href = link.href;
@@ -67,23 +69,25 @@ function allplay() {
 function toggleRecording( e ) {
 	canvasID = e.id;
 	var imgchange = e;
-	if (e.classList.contains("recording")) {
-	// stop recording
-		audioRecorder.stop();
-		e.classList.remove("recording");
-		audioRecorder.getBuffers( gotBuffers );
-		imgchange.src = 'images/mic.png'
-		link = document.getElementById('save');
-		lrecord = "l" + e.id;
-	} else {
-	// start recording  
-		if (!audioRecorder)
-	    		return;
-	
-		e.classList.add("recording");
-		audioRecorder.clear();
-		audioRecorder.record();
-		imgchange.src = 'images/micrec.png'
+	if(canvasID == "record") {
+		if (e.classList.contains("recording")) {
+		// stop recording
+			audioRecorder.stop();
+			e.classList.remove("recording");
+			audioRecorder.getBuffers( gotBuffers );
+			imgchange.src = 'images/mic.png'
+			lrecord = "l" + e.id;
+			link = document.getElementById('save');
+		} else {
+		// start recording  
+			if (!audioRecorder)
+		    		return;
+		
+			e.classList.add("recording");
+			audioRecorder.clear();
+			audioRecorder.record();
+			imgchange.src = 'images/micrec.png'
+		}
 	}
 }
 
