@@ -51,8 +51,13 @@ function allplay() {
 	console.log(track2link);
 	var track1 = new Audio(track1link.href);
 	var track2 = new Audio(track2link.href);
-	track1.play();
-	track2.play();
+	
+	if(!track1 && !track2) {
+		return;
+	} else {
+		track1.play();
+		track2.play();
+	}
 }
 
 function toggleRecording( e ) {
