@@ -45,14 +45,14 @@ function play( e ) {
 }
 
 function allplay() {
-	var track1link = document.getElementById('lrecord1');
+	var track1link = document.getElementById('lrecord');
 	console.log(track1link);
 	var track2link = document.getElementById('lrecord2');
 	console.log(track2link);
-	//var track1 = new Audio(track1link.href);
-	//var track2 = new Audio(track2link.href);
-	//track1.play();
-	//track2.play();
+	var track1 = new Audio(track1link.href);
+	var track2 = new Audio(track2link.href);
+	track1.play();
+	track2.play();
 }
 
 function toggleRecording( e ) {
