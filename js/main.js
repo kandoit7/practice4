@@ -49,14 +49,18 @@ function allplay() {
 	console.log(track1link);
 	var track2link = document.getElementById('lrecord2');
 	console.log(track2link);
-	var track1 = new Audio(track1link.href);
-	var track2 = new Audio(track2link.href);
-	
-	if(!track1 && !track2) {
+	if(!track1link && !track2link){
 		return;
 	} else {
-		track1.play();
-		track2.play();
+		var track1 = new Audio(track1link.href);
+		var track2 = new Audio(track2link.href);
+		
+		if(!track1 && !track2) {
+			return;
+		} else {
+			track1.play();
+			track2.play();
+		}
 	}
 }
 
