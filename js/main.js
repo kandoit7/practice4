@@ -1,8 +1,8 @@
 
 var masterInputSelector = document.createElement('select');
 
-var audioInputSelect = document.querySelector('select#change');
-var selectors = [audioInputSelect];
+//var audioInputSelect = document.querySelector('select#change');
+//var selectors = [audioInputSelect];
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
