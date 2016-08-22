@@ -50,6 +50,8 @@ function down() {
 
 function toggleRecording( e ) {
 	canvasID = e.id;
+	var imgchange = e;
+	
 	if(canvasID == "record") { recorderr = recordRecorder; }
 	if(canvasID == "record2") { recorderr = record2Recorder; }
 	if(canvasID == "record3") { recorderr = record3Recorder; }
