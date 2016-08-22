@@ -54,19 +54,19 @@ function toggleRecording( e ) {
 	
 	if (e.classList.contains("recording")) {
 	// stop recording
-		e.id+Recorder.stop();
+		(e.id+"Recorder").stop();
 		e.classList.remove("recording");
-		e.id+Recorder.getBuffers( gotBuffers );
+		(e.id+"Recorder").getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
 	} else {
 	// start recording  (audioRecorder => recorderr  change)
-		if (!e.id+Recorder)
+		if (!(e.id+"Recorder"))
 	    		return;
 		e.classList.add("recording");
-		e.id+Recorder.clear();
-		e.id+Recorder.record();
+		(e.id+"Recorder").clear();
+		(e.id+"Recorder").record();
 		imgchange.src = 'images/micrec.png'
 	}
 }
