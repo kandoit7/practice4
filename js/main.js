@@ -163,5 +163,5 @@ function handleError(error) {
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 //var changeInput = document.querySelectorAll('select#change');
 //changeInput.onchange = initAudio;
-initAudio(0);
+initAudio();
 
