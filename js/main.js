@@ -19,7 +19,7 @@ var recIndex = 0;
 var lrecord = null;
 var firstlink = null;
 var tracklink = null;
-var link = null;
+//var link = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -48,8 +48,8 @@ function down( e ) {
 
 function allplay() {
 	var track1link = document.getElementById('lrecord');
-	console.log(track1link);
 	var track2link = document.getElementById('lrecord2');
+	console.log(track1link);
 	console.log(track2link);
 	if(!track1link && !track2link){
 		return;
@@ -69,25 +69,23 @@ function allplay() {
 function toggleRecording( e ) {
 	canvasID = e.id;
 	var imgchange = e;
-	if(canvasID == "record") {
-		if (e.classList.contains("recording")) {
-		// stop recording
-			audioRecorder.stop();
-			e.classList.remove("recording");
-			audioRecorder.getBuffers( gotBuffers );
-			imgchange.src = 'images/mic.png'
-			link = document.getElementById('save');
-			lrecord = "l" + e.id;
-		} else {
-		// start recording  
-			if (!audioRecorder)
-		    		return;
-		
-			e.classList.add("recording");
-			audioRecorder.clear();
-			audioRecorder.record();
-			imgchange.src = 'images/micrec.png'
-		}
+	if (e.classList.contains("recording")) {
+	// stop recording
+		audioRecorder.stop();
+		e.classList.remove("recording");
+		audioRecorder.getBuffers( gotBuffers );
+		imgchange.src = 'images/mic.png'
+		link = document.getElementById('save');
+		lrecord = "l" + e.id;
+	} else {
+	// start recording  
+		if (!audioRecorder)
+	    		return;
+	
+		e.classList.add("recording");
+		audioRecorder.clear();
+		audioRecorder.record();
+		imgchange.src = 'images/micrec.png'
 	}
 }
 
