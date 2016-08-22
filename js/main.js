@@ -8,7 +8,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
 //var audioInput = null;
-var audioRecorder = null;
+//var audioRecorder = null;
 //var realAudioInput = null;
 var Track = null;    
 var rafID = null;
@@ -131,7 +131,7 @@ function gotStream(stream) {
 	analyserNode.fftSize = 2048;
 	inputPoint.connect( analyserNode );
 	
-	audioRecorder = new Recorder( inputPoint );
+	var audioRecorder = new Recorder( inputPoint );
 	// speak / headphone feedback initial settings
 	
 	changeGain.gain.value = 1.0;
