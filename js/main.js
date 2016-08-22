@@ -19,11 +19,7 @@ var recIndex = 0;
 var lrecord = null;
 var firstlink = null;
 var tracklink = null;
-var recordRecorder = null;
-var record2Recorder = null;
-var record3Recorder = null;
-var record4Recorder = null;
-//var link = null;
+var link = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -41,6 +37,7 @@ function play( e ) {
 	tracklink.id = lrecord;
 	tracklink.href = link.href;
 	e.appendChild(tracklink);
+	
 	var track = new Audio(tracklink.href);
 	track.play();
 }
