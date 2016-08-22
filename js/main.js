@@ -8,8 +8,8 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
 var audioInput = null,
-    realAudioInput = null,
     audioRecorder = null;
+    //realAudioInput = null,
 var Track = null;    
 var rafID = null;
 var canvasID = null;
@@ -121,7 +121,7 @@ function changeAudioDestination(event) {
 function gotStream(stream) {
 	window.stream = stream; // make stream available to console
 	// Create an AudioNode from the stream.
-	realAudioInput = audioContext.createMediaStreamSource(stream);
+	var realAudioInput = audioContext.createMediaStreamSource(stream);
 	audioInput = realAudioInput;
 	audioInput.connect(inputPoint);
 	
