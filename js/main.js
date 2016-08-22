@@ -44,7 +44,13 @@ function play( e ) {
 	track.play();
 }
 
-function down() {
+function allplay() {
+	var track1link = document.getElementById('lrecord1');
+	var track2link = document.getElementById('lrecord2');
+	var track1 = new Audio(track1link.href);
+	var track2 = new Audio(track2link.href);
+	track1.play();
+	track2.play();
 }
 
 function toggleRecording( e ) {
