@@ -77,7 +77,7 @@ function toggleRecording( e ) {
 			audioRecorder.getBuffers( gotBuffers );
 			imgchange.src = 'images/mic.png'
 			lrecord = "l" + e.id;
-			link = document.getElementById('save');
+			//link = document.getElementById('save');
 		} else {
 		// start recording  
 			if (!audioRecorder)
