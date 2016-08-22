@@ -76,6 +76,7 @@ function doneEncoding( blob ) {
 }
 
 function gotDevices(deviceInfos) {
+	/*
 	var values = selectors.map(function(select) {
 		return select.value;
 	});
@@ -91,7 +92,7 @@ function gotDevices(deviceInfos) {
 			select.value = values[selectorIndex];
 		}
 	});
-	
+	*/
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
