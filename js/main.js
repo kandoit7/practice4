@@ -19,6 +19,10 @@ var recIndex = 0;
 var lrecord = null;
 var firstlink = null;
 var tracklink = null;
+var oneRecorder = null;
+var twoRecorder = null;
+var threeRecorder = null;
+var fourRecorder = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -45,6 +49,7 @@ function down() {
 
 function toggleRecording( e ) {
 	canvasID = e.id;
+	console.log(e);
 	var imgchange = e;
 	
 	if (e.classList.contains("recording")) {
@@ -114,7 +119,7 @@ function changeAudioDestination(event) {
 	
 function gotStream(stream) {
 	window.stream = stream; // make stream available to console
-	console.log(event);
+	
 	// Create an AudioNode from the stream.
 	var realAudioInput = audioContext.createMediaStreamSource(stream);
 	var audioInput = realAudioInput;
@@ -129,6 +134,8 @@ function gotStream(stream) {
 	inputPoint.connect( analyserNode );
 	
 	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
+	//if ( sampleRecorder == null ) { sampleRecorder = audioRecorder; }
+	//if ( )
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
