@@ -55,7 +55,7 @@ function toggleRecording( e ) {
 		// stop recording
 			recordRecorder.stop();
 			e.classList.remove("recording");
-			//recordRecorder.getBuffers( gotBuffers );
+			recordRecorder.getBuffers( gotBuffers );
 			imgchange.src = 'images/mic.png'
 			link = document.getElementById('save');
 			lrecord = "l" + e.id;
@@ -75,7 +75,7 @@ function toggleRecording( e ) {
 		// stop recording
 			record2Recorder.stop();
 			e.classList.remove("recording");
-			//record2Recorder.getBuffers( gotBuffers );
+			record2Recorder.getBuffers( gotBuffers );
 			imgchange.src = 'images/mic.png'
 			link = document.getElementById('save');
 			lrecord = "l" + e.id;
@@ -95,7 +95,7 @@ function toggleRecording( e ) {
 		// stop recording
 			record3Recorder.stop();
 			e.classList.remove("recording");
-			//record3Recorder.getBuffers( gotBuffers );
+			record3Recorder.getBuffers( gotBuffers );
 			imgchange.src = 'images/mic.png'
 			link = document.getElementById('save');
 			lrecord = "l" + e.id;
@@ -115,7 +115,7 @@ function toggleRecording( e ) {
 		// stop recording
 			record4Recorder.stop();
 			e.classList.remove("recording");
-			//record4Recorder.getBuffers( gotBuffers );
+			record4Recorder.getBuffers( gotBuffers );
 			imgchange.src = 'images/mic.png'
 			link = document.getElementById('save');
 			lrecord = "l" + e.id;
