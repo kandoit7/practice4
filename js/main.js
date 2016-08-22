@@ -8,7 +8,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
 //var audioInput = null;
-//var audioRecorder = null;
+var audioRecorder = null;
 //var realAudioInput = null;
 var Track = null;    
 var rafID = null;
@@ -131,15 +131,16 @@ function gotStream(stream) {
 	analyserNode.fftSize = 2048;
 	inputPoint.connect( analyserNode );
 	
-	var audioRecorder = new Recorder( inputPoint );
+	audioRecorder = new Recorder( inputPoint );
 	// speak / headphone feedback initial settings
 	
-	changeGain.gain.value = 1.0;
-	inputPoint.connect(changeGain);
-	changeGain.connect(audioContext.destination);
+	//changeGain.gain.value = 1.0;
+	//inputPoint.connect(changeGain);
+	//changeGain.connect(audioContext.destination);
+	inputPoint.connect(audioContext.destination);
 	
 	return navigator.mediaDevices.enumerateDevices();
-	}
+}
 	
 function initAudio(index) {
 	if (window.stream) {
