@@ -19,10 +19,10 @@ var recIndex = 0;
 var lrecord = null;
 var firstlink = null;
 var tracklink = null;
-var oneRecorder = null;
-var twoRecorder = null;
-var threeRecorder = null;
-var fourRecorder = null;
+var recordRecorder = null;
+var record2Recorder = null;
+var record3Recorder = null;
+var record4Recorder = null;
 
 function gotBuffers( buffers ) {
 	var ci = "c"+canvasID;
@@ -51,22 +51,23 @@ function toggleRecording( e ) {
 	canvasID = e.id;
 	console.log(e);
 	var imgchange = e;
-	
+	var recorder = e.id + Recorder;
+	console.log(recorder);
 	if (e.classList.contains("recording")) {
 	// stop recording
-		audioRecorder.stop();
+		recorder.stop();
 		e.classList.remove("recording");
-		audioRecorder.getBuffers( gotBuffers );
+		recorder.getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
 	} else {
-	// start recording
-		if (!audioRecorder)
+	// start recording  (audioRecorder => recorder  change)
+		if (!recorder)
 	    		return;
 		e.classList.add("recording");
-		audioRecorder.clear();
-		audioRecorder.record();
+		recorder.clear();
+		recorder.record();
 		imgchange.src = 'images/micrec.png'
 	}
 }
@@ -133,9 +134,11 @@ function gotStream(stream) {
 	analyserNode.fftSize = 2048;
 	inputPoint.connect( analyserNode );
 	
-	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
-	//if ( sampleRecorder == null ) { sampleRecorder = audioRecorder; }
-	//if ( )
+	var audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
+	if ( recordRecorder == null ) { recordRecorder = audioRecorder; }
+	if ( recordRecorder == audioRecorder || record2Recorder == null ) { record2Recorder = audioRecorder; }
+	if ( record2Recorder == audioRecorder || record3Recorder == null ) { record3Recorder = audioRecorder; }
+	if ( record3Recorder == audioRecorder || record4Recorder == null ) { record4Recorder = audioRecorder; }
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
