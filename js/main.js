@@ -131,7 +131,7 @@ function gotStream(stream) {
 	analyserNode.fftSize = 2048;
 	inputPoint.connect( analyserNode );
 	
-	audioRecorder = new Recorder( inputPoint );
+	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
@@ -148,7 +148,7 @@ function initAudio(index) {
 			track.stop();
 		});
 	}
-	
+	console.log(index);
 	var audioSource = index.value;
 	var constraints = {
 		audio: { deviceId: audioSource ? {exact: audioSource} : undefined}
