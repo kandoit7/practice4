@@ -51,23 +51,23 @@ function toggleRecording( e ) {
 	canvasID = e.id;
 	console.log(e);
 	var imgchange = e;
-	var recorder = e.id + Recorder;
-	console.log(recorder);
+	var recorderr = e.id + Recorder;
+	console.log(recorderr);
 	if (e.classList.contains("recording")) {
 	// stop recording
-		recorder.stop();
+		recorderr.stop();
 		e.classList.remove("recording");
-		recorder.getBuffers( gotBuffers );
+		recorderr.getBuffers( gotBuffers );
 		imgchange.src = 'images/mic.png'
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
 	} else {
-	// start recording  (audioRecorder => recorder  change)
-		if (!recorder)
+	// start recording  (audioRecorder => recorderr  change)
+		if (!recorderr)
 	    		return;
 		e.classList.add("recording");
-		recorder.clear();
-		recorder.record();
+		recorderr.clear();
+		recorderr.record();
 		imgchange.src = 'images/micrec.png'
 	}
 }
