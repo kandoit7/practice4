@@ -73,23 +73,7 @@ function doneEncoding( blob ) {
 }
 
 function gotDevices(deviceInfos) {
-	/*
-	var values = selectors.map(function(select) {
-		return select.value;
-	});
-	selectors.forEach(function(select) {
-		while (select.firstChild) {
-			select.removeChild(select.firstChild);
-		}
-	});
-	selectors.forEach(function(select, selectorIndex) {
-		if (Array.prototype.slice.call(select.childNodes).some(function(n) {
-			return n.value === values[selectorIndex];
-		})) {
-			select.value = values[selectorIndex];
-		}
-	});
-	*/
+	
 	for (var i = 0; i !== deviceInfos.length; ++i) {
 		var deviceInfo = deviceInfos[i];
 		var option = document.createElement('option');
@@ -130,6 +114,7 @@ function gotStream(stream) {
 	inputPoint.connect( analyserNode );
 	
 	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
+	
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
@@ -137,7 +122,7 @@ function gotStream(stream) {
 	//changeGain.connect(audioContext.destination);
 	inputPoint.connect(audioContext.destination);
 	
-	return navigator.mediaDevices.enumerateDevices();
+	//return navigator.mediaDevices.enumerateDevices();
 }
 	
 function initAudio(index) {
