@@ -51,9 +51,6 @@ function toggleRecording( e ) {
 	canvasID = e.id;
 	var imgchange = e;
 	
-	
-	console.log(audioRecorder);
-	
 	if (e.classList.contains("recording")) {
 	// stop recording
 		audioRecorder.stop();
@@ -64,13 +61,9 @@ function toggleRecording( e ) {
 		lrecord = "l" + e.id;
 	} else {
 	// start recording  
-		//if (!recorderr)
-	    	//	return;
+		if (!audioRecorder)
+	    		return;
 	
-		if(canvasID == "record") { audioRecorder = recordRecorder; }
-		if(canvasID == "record2") { audioRecorder = record2Recorder; }
-		if(canvasID == "record3") { audioRecorder = record3Recorder; }
-		if(canvasID == "record4") { audioRecorder = record4Recorder; }
 		e.classList.add("recording");
 		audioRecorder.clear();
 		audioRecorder.record();
@@ -140,11 +133,11 @@ function gotStream(stream) {
 	analyserNode.fftSize = 2048;
 	inputPoint.connect( analyserNode );
 	
-	var audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
-	if ( recordRecorder == null ) { recordRecorder = audioRecorder; }
-	if ( recordRecorder == audioRecorder || record2Recorder == null ) { record2Recorder = audioRecorder; }
-	if ( record2Recorder == audioRecorder || record3Recorder == null ) { record3Recorder = audioRecorder; }
-	if ( record3Recorder == audioRecorder || record4Recorder == null ) { record4Recorder = audioRecorder; }
+	audioRecorder = new Recorder( inputPoint ); // this fuck what the fuck
+	//if ( recordRecorder == null ) { recordRecorder = audioRecorder; }
+	//if ( recordRecorder == audioRecorder || record2Recorder == null ) { record2Recorder = audioRecorder; }
+	//if ( record2Recorder == audioRecorder || record3Recorder == null ) { record3Recorder = audioRecorder; }
+	//if ( record3Recorder == audioRecorder || record4Recorder == null ) { record4Recorder = audioRecorder; }
 	// speak / headphone feedback initial settings
 	
 	//changeGain.gain.value = 1.0;
