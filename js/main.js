@@ -143,7 +143,7 @@ function gotStream(stream) {
 	//changeGain.connect(audioContext.destination);
 	inputPoint.connect(audioContext.destination);
 	
-	//return navigator.mediaDevices.enumerateDevices();
+	return navigator.mediaDevices.enumerateDevices();
 }
 	
 function initAudio(index) {
