@@ -1,9 +1,6 @@
 
 var masterInputSelector = document.createElement('select');
 
-//var audioInputSelect = document.querySelector('select#change');
-//var selectors = [audioInputSelect];
-
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
@@ -70,7 +67,7 @@ function toggleRecording( e ) {
 	canvasID = e.id;
 	var imgchange = e;
 	if (e.classList.contains("recording")) {
-	// stop recording
+		// stop recording
 		audioRecorder.stop();
 		e.classList.remove("recording");
 		audioRecorder.getBuffers( gotBuffers );
@@ -78,7 +75,7 @@ function toggleRecording( e ) {
 		link = document.getElementById('save');
 		lrecord = "l" + e.id;
 	} else {
-	// start recording  
+		// start recording  
 		if (!audioRecorder)
 	    		return;
 	
